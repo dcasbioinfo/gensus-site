@@ -23,7 +23,7 @@ const Context: React.FC = () => {
                   <i className="fas fa-calendar-alt text-2xl text-primary mr-4"></i>
                   <div>
                     <p className="font-medium">Criado em 2023</p>
-                    <p className="text-sm text-gray-600">Portaria n°1949 de 4 de agosto de 2020</p>
+                    <p className="text-sm text-gray-600">Integrante do Programa Genomas Brasil</p>
                   </div>
                 </div>
               </div>

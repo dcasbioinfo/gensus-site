@@ -14,21 +14,21 @@ const Hero: React.FC = () => {
           <p className="text-xl md:text-2xl mb-8">
             Uma rede acadêmica para caracterização dos aspectos genômicos que impactam o processo saúde-doença na população brasileira.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             <Button 
               onClick={() => scrollToElement('proposal')} 
-              className="bg-white text-primary-dark hover:bg-secondary hover:text-white transition-colors focus:ring-2 focus:ring-white"
+              className="bg-white hover:bg-secondary text-primary font-bold text-lg px-8 py-7 shadow-xl hover:text-white transition-all"
               size="lg"
             >
-              <span className="text-primary-dark hover:text-white">Saiba mais</span>
+              Saiba mais
             </Button>
             <Button 
               onClick={() => scrollToElement('contact')} 
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-dark transition-colors focus:ring-2 focus:ring-white"
+              className="border-2 border-white text-white bg-primary/40 backdrop-blur-sm hover:bg-white hover:text-primary font-bold text-lg px-8 py-7 shadow-xl transition-all"
               size="lg"
             >
-              <span className="text-white group-hover:text-primary-dark">Entre em contato</span>
+              Entre em contato
             </Button>
           </div>
           

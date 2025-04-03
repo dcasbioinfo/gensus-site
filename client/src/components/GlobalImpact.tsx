@@ -36,32 +36,38 @@ const GlobalImpact: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow-md p-5">
-              <div className="text-3xl font-bold text-primary mb-3">+50</div>
-              <h4 className="text-lg font-semibold mb-2">Publicações Científicas</h4>
-              <p className="text-gray-600">
-                Artigos científicos publicados em revistas internacionais de alto impacto,
-                contribuindo para o avanço do conhecimento genômico global.
-              </p>
-            </div>
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4">Objetivos e Metas Esperadas</h3>
+            <p className="mb-4">
+              O Genomas SUS tem como metas e objetivos a serem alcançados ao longo de sua implementação:
+            </p>
             
-            <div className="bg-white rounded-lg shadow-md p-5">
-              <div className="text-3xl font-bold text-primary mb-3">+10</div>
-              <h4 className="text-lg font-semibold mb-2">Parcerias Internacionais</h4>
-              <p className="text-gray-600">
-                Colaborações estabelecidas com instituições e projetos internacionais
-                para intercâmbio de conhecimento e tecnologias em genômica.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md p-5">
-              <div className="text-3xl font-bold text-primary mb-3">+100</div>
-              <h4 className="text-lg font-semibold mb-2">Variantes Genéticas Identificadas</h4>
-              <p className="text-gray-600">
-                Milhares de variantes genéticas específicas da população brasileira identificadas,
-                contribuindo para o conhecimento global da diversidade genômica humana.
-              </p>
+            <div className="grid md:grid-cols-3 gap-6 mt-6">
+              <div className="bg-secondary/10 rounded-lg p-5">
+                <h4 className="text-lg font-semibold mb-2">Publicações Científicas</h4>
+                <p className="text-gray-600">
+                  O projeto pretende gerar dezenas de artigos científicos em revistas internacionais de alto impacto,
+                  contribuindo para o avanço do conhecimento genômico global e aumentando a visibilidade da pesquisa brasileira.
+                </p>
+              </div>
+              
+              <div className="bg-secondary/10 rounded-lg p-5">
+                <h4 className="text-lg font-semibold mb-2">Parcerias Internacionais</h4>
+                <p className="text-gray-600">
+                  Estabelecer colaborações com instituições e projetos internacionais
+                  para intercâmbio de conhecimento e tecnologias em genômica é um dos principais objetivos
+                  para potencializar o impacto e abrangência do programa.
+                </p>
+              </div>
+              
+              <div className="bg-secondary/10 rounded-lg p-5">
+                <h4 className="text-lg font-semibold mb-2">Variantes Genéticas Brasileiras</h4>
+                <p className="text-gray-600">
+                  Espera-se identificar milhares de variantes genéticas específicas da população brasileira, 
+                  contribuindo significativamente para o conhecimento global da diversidade genômica humana
+                  e reduzindo a disparidade nos bancos de dados genômicos internacionais.
+                </p>
+              </div>
             </div>
           </div>
           
