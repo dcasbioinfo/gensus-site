@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BrazilMap from './BrazilMap';
+import GoogleMapComponent from './GoogleMap';
 import { researchCenters, collaboratingCenters } from '@/assets/projectData';
 import { ResearchCenter } from '@/assets/projectData';
 
@@ -64,22 +65,42 @@ const Structure: React.FC = () => {
             </div>
           </div>
           
-          <div className="pt-6">
-            <BrazilMap 
-              centers={anchorCenters} 
-              title="Mapa dos Centros de Pesquisa Âncora"
-              onRemoveCenter={handleRemoveAnchorCenter}
-              editable={false}
-            />
+          <div className="grid md:grid-cols-2 gap-8 pt-6">
+            <div>
+              <BrazilMap 
+                centers={anchorCenters} 
+                title="Mapa Esquemático dos Centros de Pesquisa Âncora"
+                onRemoveCenter={handleRemoveAnchorCenter}
+                editable={false}
+              />
+            </div>
+            <div>
+              <GoogleMapComponent 
+                centers={anchorCenters} 
+                title="Mapa Geográfico dos Centros de Pesquisa Âncora"
+                onRemoveCenter={handleRemoveAnchorCenter}
+                editable={false}
+              />
+            </div>
           </div>
           
-          <div className="pt-6">
-            <BrazilMap 
-              centers={collabCenters} 
-              title="Mapa dos Centros Colaboradores"
-              onRemoveCenter={handleRemoveCollabCenter}
-              editable={false}
-            />
+          <div className="grid md:grid-cols-2 gap-8 pt-6">
+            <div>
+              <BrazilMap 
+                centers={collabCenters} 
+                title="Mapa Esquemático dos Centros Colaboradores"
+                onRemoveCenter={handleRemoveCollabCenter}
+                editable={false}
+              />
+            </div>
+            <div>
+              <GoogleMapComponent 
+                centers={collabCenters} 
+                title="Mapa Geográfico dos Centros Colaboradores"
+                onRemoveCenter={handleRemoveCollabCenter}
+                editable={false}
+              />
+            </div>
           </div>
           
           <div>
