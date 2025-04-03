@@ -4,10 +4,11 @@ import Hero from '@/components/Hero';
 import Context from '@/components/Context';
 import Proposal from '@/components/Proposal';
 import Mission from '@/components/Mission';
+import GlobalImpact from '@/components/GlobalImpact';
 import Structure from '@/components/Structure';
 import Projects from '@/components/Projects';
+import Team from '@/components/Team';
 import Pillars from '@/components/Pillars';
-import GlobalContext from '@/components/GlobalContext';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -20,9 +21,10 @@ const Home: React.FC = () => {
         <Context />
         <Proposal />
         <Mission />
-        <GlobalContext />
+        <GlobalImpact />
         <Structure />
         <Projects />
+        <Team />
         <Pillars />
         <Contact />
       </main>
