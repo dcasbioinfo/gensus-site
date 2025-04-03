@@ -1,164 +1,153 @@
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-
-interface ThematicAxis {
-  name: string;
-  projects: string[];
-  samples: number;
-  color: string;
-}
+import React, { useState } from 'react';
+import { thematicAxes, ThematicAxis } from '@/assets/projectData';
+import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip, Legend } from 'recharts';
 
 const Projects: React.FC = () => {
-  const thematicAxes: ThematicAxis[] = [
-    {
-      name: "Oncogenômica",
-      projects: [
-        "CoDiGO (Coorte Dinâmica Genômica Oncológica)",
-        "RGDarkMatter (Redes Regulatórias da Matéria Escura do Genoma)",
-        "VARIOMA (Caracterização do varioma de pacientes com adenocarcinoma gástrico)"
-      ],
-      samples: 5000,
-      color: "bg-blue-500"
-    },
-    {
-      name: "Coortes de Nascimento",
-      projects: [
-        "BRISA (Coorte de nascimento brasileira São Luís e Ribeirão Preto)",
-        "EPIGEN II (Epidemiologia Genética de Coortes Brasileiras II)"
-      ],
-      samples: 4000,
-      color: "bg-green-500"
-    },
-    {
-      name: "Genômica de Populações",
-      projects: [
-        "RENOMA (Rede Genomas da Amazônia)",
-        "RPGPH-2 (Rede de Pesquisa em Genômica Populacional Humana)",
-        "Genomas Paraná"
-      ],
-      samples: 3500,
-      color: "bg-purple-500"
-    },
-    {
-      name: "Doenças Infecciosas",
-      projects: [
-        "INFECTOMA (Vigilância genômica do COVID-19)",
-        "Genomas Fiocruz"
-      ],
-      samples: 3000,
-      color: "bg-red-500"
-    },
-    {
-      name: "Doenças Cardiovasculares",
-      projects: [
-        "RENOMICA DAC (Rede Nacional de Genômica Cardiovascular)"
-      ],
-      samples: 2500,
-      color: "bg-orange-500"
-    },
-    {
-      name: "Genética Médica",
-      projects: [
-        "CASAIS (Piloto Programa Nacional de Triagem de Casais)",
-        "MedEpiGen"
-      ],
-      samples: 2000,
-      color: "bg-yellow-500"
-    },
-    {
-      name: "Envelhecimento",
-      projects: [
-        "SABE (Saúde, Bem-Estar e Envelhecimento)"
-      ],
-      samples: 1000,
-      color: "bg-teal-500"
-    }
-  ];
-
-  const totalSamples = thematicAxes.reduce((acc, axis) => acc + axis.samples, 0);
+  const [selectedAxis, setSelectedAxis] = useState<ThematicAxis | null>(null);
+  
+  // Preparar dados para o gráfico de distribuição
+  const chartData = thematicAxes.map(axis => ({
+    name: axis.name,
+    value: axis.samples,
+    color: axis.color
+  }));
+  
+  // Total de amostras
+  const totalSamples = chartData.reduce((sum, item) => sum + item.value, 0);
+  
+  // Função para selecionar um eixo temático
+  const handleAxisClick = (axis: ThematicAxis) => {
+    setSelectedAxis(axis);
+  };
+  
+  // Renderização condicional para informações detalhadas
+  const renderAxisDetails = () => {
+    if (!selectedAxis) return null;
+    
+    return (
+      <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold" style={{ color: selectedAxis.color }}>
+            {selectedAxis.name}
+          </h3>
+          <span className="text-gray-600 font-medium">
+            {selectedAxis.samples.toLocaleString()} amostras
+          </span>
+        </div>
+        
+        <h4 className="text-lg font-semibold mb-3">Projetos Relacionados:</h4>
+        <ul className="list-disc pl-6 space-y-2">
+          {selectedAxis.projects.map((project, index) => (
+            <li key={index}>{project}</li>
+          ))}
+        </ul>
+        
+        <div className="mt-6 flex justify-end">
+          <button 
+            className="text-sm text-gray-500 hover:text-gray-700"
+            onClick={() => setSelectedAxis(null)}
+          >
+            Voltar para visão geral
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <section id="projects" className="py-16 bg-secondary/30">
+    <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-primary text-center">Projetos e Eixos Temáticos</h2>
+        <h2 className="text-3xl font-bold text-center mb-4">Projetos e Eixos Temáticos</h2>
+        <p className="text-lg text-center mb-10 max-w-3xl mx-auto">
+          O Genomas SUS desenvolveu 5 eixos temáticos para distribuição das 21.000 amostras a serem sequenciadas, priorizando áreas de saúde de relevância para o Sistema Único de Saúde.
+        </p>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Gráfico de distribuição */}
+          <div className="lg:col-span-1 bg-white rounded-lg shadow-md p-4">
+            <h3 className="text-xl font-semibold mb-4 text-center">Distribuição por Eixo Temático</h3>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={chartData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    innerRadius={40}
+                    dataKey="value"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {chartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    formatter={(value) => [`${value.toLocaleString()} amostras`, 'Quantidade']}
+                    labelFormatter={(name) => `Eixo: ${name}`}
+                  />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+              <div className="text-center mt-4">
+                <p className="font-semibold">Total: {totalSamples.toLocaleString()} amostras</p>
+              </div>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-6 md:p-8">
-              <p className="mb-6">
-                O Genomas SUS inclui coortes de projetos de pesquisa com coleta prospectiva e de projetos que já concluíram a coleta. A seguir estão listadas algumas das coortes inseridas na Rede, organizadas em eixos temáticos de relevância para o SUS.
-              </p>
-              
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white">
-                  <thead>
-                    <tr className="bg-primary text-white">
-                      <th className="py-3 px-4 text-left">Eixo Temático</th>
-                      <th className="py-3 px-4 text-left">Coortes/Projetos</th>
-                      <th className="py-3 px-4 text-right">Amostras</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {thematicAxes.map((axis, index) => (
-                      <tr key={index} className="hover:bg-gray-50">
-                        <td className="py-3 px-4">{axis.name}</td>
-                        <td className="py-3 px-4">
-                          <ul className="list-disc ml-5">
-                            {axis.projects.map((project, idx) => (
-                              <li key={idx}>{project}</li>
-                            ))}
-                          </ul>
-                        </td>
-                        <td className="py-3 px-4 text-right">{axis.samples.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr className="bg-gray-100 font-medium">
-                      <td className="py-3 px-4" colSpan={2}>Total</td>
-                      <td className="py-3 px-4 text-right">{totalSamples.toLocaleString()}</td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-              
-              <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4 text-primary">Distribuição por Eixo Temático</h3>
-                
-                <div className="bg-neutral p-4 rounded-lg">
-                  <div className="h-20 md:h-32 flex items-end">
-                    {thematicAxes.map((axis, index) => {
-                      const heightPercentage = Math.round((axis.samples / 5000) * 100);
-                      return (
-                        <div 
-                          key={index} 
-                          className={`w-1/7 h-[${heightPercentage}%] ${axis.color} mx-1 relative group`}
-                          style={{ height: `${heightPercentage}%` }}
-                        >
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 invisible group-hover:visible bg-blue-700 text-white text-xs px-2 py-1 rounded">
-                            {axis.samples.toLocaleString()}
-                          </div>
-                        </div>
-                      );
-                    })}
+          {/* Lista de eixos temáticos */}
+          <div className="lg:col-span-2">
+            {selectedAxis ? (
+              renderAxisDetails()
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {thematicAxes.map((axis, index) => (
+                  <div 
+                    key={index}
+                    className="bg-white p-5 rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105"
+                    onClick={() => handleAxisClick(axis)}
+                    style={{ borderLeft: `4px solid ${axis.color}` }}
+                  >
+                    <div className="flex justify-between items-center mb-3">
+                      <h3 className="text-xl font-semibold" style={{ color: axis.color }}>
+                        {axis.name}
+                      </h3>
+                      <span className="text-sm font-medium px-2 py-1 bg-gray-100 rounded-md">
+                        {axis.samples.toLocaleString()} amostras
+                      </span>
+                    </div>
+                    <p className="text-gray-600 mb-2">
+                      {axis.projects[0].substring(0, 70)}...
+                    </p>
+                    <div className="text-right mt-3">
+                      <span className="text-sm text-primary hover:underline">
+                        Ver detalhes →
+                      </span>
+                    </div>
                   </div>
-                  
-                  <div className="flex text-xs mt-2">
-                    {thematicAxes.map((axis, index) => (
-                      <div key={index} className="w-1/7 text-center">
-                        {axis.name === "Doenças Cardiovasculares" ? "D. Cardiovasc." : 
-                         axis.name === "Coortes de Nascimento" ? "Coortes Nasc." :
-                         axis.name === "Genômica de Populações" ? "Gen. Populações" :
-                         axis.name === "Doenças Infecciosas" ? "D. Infecciosas" :
-                         axis.name === "Genética Médica" ? "Gen. Médica" :
-                         axis.name}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
-            </CardContent>
-          </Card>
+            )}
+          </div>
+        </div>
+        
+        <div className="mt-12 bg-blue-50 p-6 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4">Metas do Projeto</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-3xl font-bold text-primary mb-2">21.000</div>
+              <p>Genomas completos sequenciados de brasileiros de diferentes regiões do país</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-3xl font-bold text-primary mb-2">5</div>
+              <p>Eixos temáticos de pesquisa priorizando doenças relevantes para a saúde pública brasileira</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-3xl font-bold text-primary mb-2">+15</div>
+              <p>Instituições colaboradoras envolvidas em uma rede de pesquisa genômica nacional</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

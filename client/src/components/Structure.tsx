@@ -1,96 +1,122 @@
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import BrazilMap from '@/components/BrazilMap';
+import React, { useState } from 'react';
+import BrazilMap from './BrazilMap';
+import { researchCenters, collaboratingCenters } from '@/assets/projectData';
+import { ResearchCenter } from '@/assets/projectData';
 
 const Structure: React.FC = () => {
-  const anchorCenters = [
-    'Universidade de São Paulo (USP)',
-    'Universidade Estadual de Campinas (UNICAMP)',
-    'Universidade Federal do Rio Grande do Sul (UFRGS)',
-    'Universidade Federal do Paraná (UFPR)',
-    'Universidade de Brasília (UnB)',
-    'Universidade Federal do Maranhão (UFMA)',
-    'Universidade Federal de Pernambuco (UFPE)',
-    'Universidade Federal do Pará (UFPA)'
-  ];
-
-  const collaborativeStates = [
-    'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Maranhão', 'Minas Gerais', 'Pará',
-    'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul',
-    'Roraima', 'São Paulo', 'Tocantins'
-  ];
-
-  // Split the collaborative states into two columns
-  const halfPoint = Math.ceil(collaborativeStates.length / 2);
-  const leftColStates = collaborativeStates.slice(0, halfPoint);
-  const rightColStates = collaborativeStates.slice(halfPoint);
+  const [anchorCenters, setAnchorCenters] = useState<ResearchCenter[]>(researchCenters);
+  const [collabCenters, setCollabCenters] = useState<ResearchCenter[]>(collaboratingCenters);
+  
+  // Handler para adicionar centro âncora
+  const handleAddAnchorCenter = (center: ResearchCenter) => {
+    setAnchorCenters([...anchorCenters, center]);
+  };
+  
+  // Handler para remover centro âncora
+  const handleRemoveAnchorCenter = (id: number) => {
+    setAnchorCenters(anchorCenters.filter(center => center.id !== id));
+  };
+  
+  // Handler para adicionar centro colaborador
+  const handleAddCollabCenter = (center: ResearchCenter) => {
+    setCollabCenters([...collabCenters, center]);
+  };
+  
+  // Handler para remover centro colaborador
+  const handleRemoveCollabCenter = (id: number) => {
+    setCollabCenters(collabCenters.filter(center => center.id !== id));
+  };
 
   return (
-    <section id="structure" className="py-16 bg-neutral">
+    <section id="structure" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-primary text-center">Estruturação do Genomas SUS</h2>
-          
-          <Card className="mb-8">
-            <CardContent className="p-6 md:p-8">
-              <p className="mb-6">
-                A rede é constituída por pesquisadores e instituições públicas de diversos estados brasileiros organizados em 8 Centros Âncoras e demais Centros Colaboradores (Alagoas, Amapá, Amazonas, Bahia, Ceará, Maranhão, Minas Gerais, Pará, Pernambuco, Piauí, Rio de Janeiro, Rio Grande do Norte, Rio Grande do Sul, Roraima, São Paulo e Tocantins).
+        <h2 className="text-3xl font-bold text-center mb-10">Estruturação do Genomas SUS</h2>
+        
+        <div className="grid grid-cols-1 gap-12">
+          <div>
+            <h3 className="text-2xl font-semibold mb-6 text-center">Governança</h3>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <p className="text-lg mb-4">
+                O Genomas SUS é estruturado em um modelo de governança colaborativa, sob coordenação do Departamento de Ciência e Tecnologia do Ministério da Saúde (DECIT/SECTICS/MS). A governança é composta por diferentes instâncias:
               </p>
               
-              <p className="mb-6">
-                Os Centros Colaboradores são os responsáveis pelas coletas de amostras e dados clínicos e envio das amostras para os Centros Âncoras. Os Centros Âncoras, por sua vez, além de realizar as coletas de amostras e dados clínicos, também são os responsáveis pelo sequenciamento do genoma e análise e armazenamento dos dados.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="p-6 md:p-8">
-              <h3 className="text-xl font-bold mb-6 text-primary">Mapa dos Centros de Pesquisa</h3>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="relative">
-                  <BrazilMap />
+              <div className="grid md:grid-cols-2 gap-6 mt-8">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-xl mb-3">Comitê Gestor</h4>
+                  <p>Responsável pelas decisões estratégicas e pela supervisão geral do programa, é composto por representantes do Ministério da Saúde, instituições de pesquisa e especialistas.</p>
                 </div>
                 
-                <div>
-                  <h4 className="font-medium text-lg mb-4 text-primary">Centros Âncoras</h4>
-                  <ul className="space-y-3 mb-6">
-                    {anchorCenters.map((center, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="w-2 h-2 mt-2 rounded-full bg-primary inline-block mr-2"></span>
-                        <span>{center}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <h4 className="font-medium text-lg mb-4 text-primary">Centros Colaboradores</h4>
-                  <p className="mb-2">Os Centros Colaboradores estão distribuídos em diversos estados:</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <ul className="space-y-1">
-                        {leftColStates.map((state, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="w-2 h-2 mt-2 rounded-full bg-primary-foreground inline-block mr-2"></span>
-                            <span>{state}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <ul className="space-y-1">
-                        {rightColStates.map((state, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="w-2 h-2 mt-2 rounded-full bg-primary-foreground inline-block mr-2"></span>
-                            <span>{state}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-xl mb-3">Comitê Técnico-Científico</h4>
+                  <p>Formado por especialistas em genômica, bioinformática, ética em pesquisa e saúde pública, assessora tecnicamente o projeto e avalia protocolos de pesquisa.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-xl mb-3">Centros de Pesquisa Âncora</h4>
+                  <p>Instituições de excelência responsáveis pela condução das pesquisas, sequenciamento genômico e análise de dados, distribuídas em diferentes regiões do país.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-xl mb-3">Centros Colaboradores</h4>
+                  <p>Instituições parceiras que contribuem com amostras, infraestrutura ou expertise em áreas específicas relacionadas ao projeto.</p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+          
+          <div className="pt-6">
+            <BrazilMap 
+              centers={anchorCenters} 
+              title="Mapa dos Centros de Pesquisa Âncora"
+              onAddCenter={handleAddAnchorCenter}
+              onRemoveCenter={handleRemoveAnchorCenter}
+              editable={true}
+            />
+          </div>
+          
+          <div className="pt-6">
+            <BrazilMap 
+              centers={collabCenters} 
+              title="Mapa dos Centros Colaboradores"
+              onAddCenter={handleAddCollabCenter}
+              onRemoveCenter={handleRemoveCollabCenter}
+              editable={true}
+            />
+          </div>
+          
+          <div>
+            <h3 className="text-2xl font-semibold mb-6 text-center">Aspectos Éticos e Regulatórios</h3>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <p className="text-lg mb-4">
+                O Genomas SUS é guiado por princípios éticos rigorosos e segue as regulamentações nacionais para pesquisa genômica:
+              </p>
+              
+              <ul className="list-disc pl-6 space-y-3 mt-4">
+                <li>Todas as pesquisas são aprovadas por Comitês de Ética em Pesquisa (CEP) e pela Comissão Nacional de Ética em Pesquisa (CONEP).</li>
+                <li>Participação voluntária e consentimento livre e esclarecido para todos os participantes.</li>
+                <li>Proteção da privacidade e confidencialidade dos dados genômicos.</li>
+                <li>Compartilhamento seguro e controlado de dados para fins científicos.</li>
+                <li>Política de retorno de resultados clinicamente relevantes aos participantes.</li>
+                <li>Compromisso com a equidade no acesso aos benefícios da pesquisa genômica.</li>
+              </ul>
+              
+              <div className="mt-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <p>
+                  <strong>Portaria nº 1.949, de 4 de agosto de 2020:</strong> Instituiu o programa Genomas Brasil, visando o estabelecimento da iniciativa brasileira de Medicina de Precisão.
+                </p>
+                <p className="mt-2">
+                  <a 
+                    href="https://bvsms.saude.gov.br/bvs/saudelegis/gm/2020/prt1949_05_08_2020.html" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Consulte a portaria completa aqui
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,35 @@
+Link para a portaria 1949:
+https://bvsms.saude.gov.br/bvs/saudelegis/gm/2020/prt1949_05_08_2020.html
+
+Link para o genomas brasil:
+https://www.gov.br/saude/pt-br/composicao/sectics/decit/genomas-brasil
+
+Logo do Genomas Brasil:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43930_parceiro.png
+
+Link para o Ministério da Saúde:
+https://www.gov.br/saude/pt-br
+
+Logo do Ministério da Saúde:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43940_parceiro.png
+
+Use esta imagem para o Genomas SUS:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43929_parceiro.png
+
+Este é o logo do SUS:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43939_parceiro.png
+
+Logo do Governo Federal:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43946_parceiro.png
+
+Logo Brasil Bem Cuidado:
+https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/parceiros/43931_parceiro.png
+
+
+
+O Mapa dos Centros de pesquisa pode ter um mapa do brasil com indicadores de localização de cada centro âncora baseado na cidade e estado? Gostaria de poder adicionar ou remover centros âncora se necessário.
+
+O Mapa dos Centros colaboradores pode ter um mapa do brasil com indicadores de localização de cada centro âncora baseado na cidade e estado? Gostaria de poder adicionar ou remover centros âncora se necessário.
+
+A distribuição por Eixo Temático não está sendo adequadamente renderizado.
+
