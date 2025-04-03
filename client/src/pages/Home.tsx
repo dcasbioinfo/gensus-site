@@ -20,10 +20,10 @@ const Home: React.FC = () => {
         <Context />
         <Proposal />
         <Mission />
+        <GlobalContext />
         <Structure />
         <Projects />
         <Pillars />
-        <GlobalContext />
         <Contact />
       </main>
       <Footer />

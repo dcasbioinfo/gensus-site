@@ -6,10 +6,10 @@ const navItems = [
   { id: 'context', label: 'Contextualização' },
   { id: 'proposal', label: 'Proposta' },
   { id: 'mission', label: 'Missão' },
+  { id: 'global-context', label: 'Equipe e Impacto' },
   { id: 'structure', label: 'Estrutura' },
   { id: 'projects', label: 'Projetos' },
   { id: 'pillars', label: 'Pilares' },
-  { id: 'global-context', label: 'Equipe e Impacto' },
   { id: 'contact', label: 'Contato' },
 ];
 
