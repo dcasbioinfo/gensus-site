@@ -9,6 +9,7 @@ import Structure from '@/components/Structure';
 import Projects from '@/components/Projects';
 import Team from '@/components/Team';
 import Pillars from '@/components/Pillars';
+import News from '@/components/News';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -26,6 +27,7 @@ const Home: React.FC = () => {
         <Projects />
         <Team />
         <Pillars />
+        <News />
         <Contact />
       </main>
       <Footer />

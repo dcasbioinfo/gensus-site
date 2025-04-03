@@ -2,7 +2,12 @@
 export const projectLinks = {
   genomasBrasil: "https://www.gov.br/saude/pt-br/composicao/sectics/decit/genomas-brasil",
   portaria1949: "https://bvsms.saude.gov.br/bvs/saudelegis/gm/2020/prt1949_05_08_2020.html",
-  ministerioSaude: "https://www.gov.br/saude/pt-br"
+  ministerioSaude: "https://www.gov.br/saude/pt-br",
+  social: {
+    linkedin: "https://www.linkedin.com/company/genomas-sus/",
+    instagram: "https://www.instagram.com/genomas_sus/",
+    youtube: "https://www.youtube.com/@GenomasSUS"
+  }
 };
 
 export const logoUrls = {

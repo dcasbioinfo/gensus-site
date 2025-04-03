@@ -68,9 +68,8 @@ const Structure: React.FC = () => {
             <BrazilMap 
               centers={anchorCenters} 
               title="Mapa dos Centros de Pesquisa Âncora"
-              onAddCenter={handleAddAnchorCenter}
               onRemoveCenter={handleRemoveAnchorCenter}
-              editable={true}
+              editable={false}
             />
           </div>
           
@@ -78,9 +77,8 @@ const Structure: React.FC = () => {
             <BrazilMap 
               centers={collabCenters} 
               title="Mapa dos Centros Colaboradores"
-              onAddCenter={handleAddCollabCenter}
               onRemoveCenter={handleRemoveCollabCenter}
-              editable={true}
+              editable={false}
             />
           </div>
           

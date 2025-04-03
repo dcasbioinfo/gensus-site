@@ -17,18 +17,18 @@ const Hero: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
               onClick={() => scrollToElement('proposal')} 
-              className="bg-white text-primary-dark hover:bg-secondary hover:text-primary-dark transition-colors"
+              className="bg-white text-primary-dark hover:bg-secondary hover:text-white transition-colors focus:ring-2 focus:ring-white"
               size="lg"
             >
-              Saiba mais
+              <span className="text-primary-dark hover:text-white">Saiba mais</span>
             </Button>
             <Button 
               onClick={() => scrollToElement('contact')} 
               variant="outline"
-              className="border-2 border-white hover:bg-white hover:text-primary-dark transition-colors"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-dark transition-colors focus:ring-2 focus:ring-white"
               size="lg"
             >
-              Entre em contato
+              <span className="text-white group-hover:text-primary-dark">Entre em contato</span>
             </Button>
           </div>
           

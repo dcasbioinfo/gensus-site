@@ -19,8 +19,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: validatedData.message
       };
       
-      // In a real app, we would save this to a database
-      // and potentially send an email notification
+      // In a production environment, you would send this message to genomas_sus@usp.br
+      // using a mail service like NodeMailer or a third-party service like SendGrid
+      /*
+      // Example with nodemailer:
+      const transporter = nodemailer.createTransport({
+        host: "smtp.example.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      });
+      
+      await transporter.sendMail({
+        from: '"Genomas SUS Website" <no-reply@genomassus.org>',
+        to: "genomas_sus@usp.br",
+        subject: `Contato via Website: ${contactMessage.subject}`,
+        text: `Nome: ${contactMessage.name}\nEmail: ${contactMessage.email}\n\nMensagem:\n${contactMessage.message}`,
+        html: `<p><strong>Nome:</strong> ${contactMessage.name}</p>
+               <p><strong>Email:</strong> ${contactMessage.email}</p>
+               <p><strong>Mensagem:</strong></p>
+               <p>${contactMessage.message.replace(/\n/g, '<br>')}</p>`,
+      });
+      */
+      
       // For now, we'll just log it
       console.log("Received contact message:", contactMessage);
       
