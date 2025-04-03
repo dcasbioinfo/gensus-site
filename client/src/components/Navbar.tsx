@@ -9,6 +9,7 @@ const navItems = [
   { id: 'structure', label: 'Estrutura' },
   { id: 'projects', label: 'Projetos' },
   { id: 'pillars', label: 'Pilares' },
+  { id: 'global-context', label: 'Equipe e Impacto' },
   { id: 'contact', label: 'Contato' },
 ];
 
