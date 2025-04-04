@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import BrazilMap from './BrazilMap';
 import GoogleMapComponent from './GoogleMap';
-import { researchCenters, collaboratingCenters } from '@/assets/projectData';
-import { ResearchCenter } from '@/assets/projectData';
+import { researchCenters, collaboratingCenters } from '../assets/projectData';
+import { ResearchCenter } from '../assets/projectData';
 
 const Structure: React.FC = () => {
   const [anchorCenters, setAnchorCenters] = useState<ResearchCenter[]>(researchCenters);
@@ -65,38 +64,22 @@ const Structure: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 pt-6">
-            <div>
-              <BrazilMap 
-                centers={anchorCenters} 
-                title="Mapa Esquemático dos Centros de Pesquisa Âncora"
-                onRemoveCenter={handleRemoveAnchorCenter}
-                editable={false}
-              />
-            </div>
+          <div className="grid md:grid-cols-1 gap-8 pt-6">
             <div>
               <GoogleMapComponent 
                 centers={anchorCenters} 
-                title="Mapa Geográfico dos Centros de Pesquisa Âncora"
+                title="Centros de Pesquisa Âncora"
                 onRemoveCenter={handleRemoveAnchorCenter}
                 editable={false}
               />
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 pt-6">
-            <div>
-              <BrazilMap 
-                centers={collabCenters} 
-                title="Mapa Esquemático dos Centros Colaboradores"
-                onRemoveCenter={handleRemoveCollabCenter}
-                editable={false}
-              />
-            </div>
+          <div className="grid md:grid-cols-1 gap-8 pt-6">
             <div>
               <GoogleMapComponent 
                 centers={collabCenters} 
-                title="Mapa Geográfico dos Centros Colaboradores"
+                title="Centros Colaboradores"
                 onRemoveCenter={handleRemoveCollabCenter}
                 editable={false}
               />
