@@ -25,19 +25,7 @@ const Pillar: React.FC<PillarProps> = ({ icon, title, items }) => {
   );
 };
 
-interface RoleCardProps {
-  title: string;
-  description: string;
-}
-
-const RoleCard: React.FC<RoleCardProps> = ({ title, description }) => {
-  return (
-    <div className="p-3 rounded-lg bg-white/10">
-      <h4 className="font-bold mb-2">{title}</h4>
-      <p className="text-sm">{description}</p>
-    </div>
-  );
-};
+// Componente RoleCard removido por solicitação
 
 const Pillars: React.FC = () => {
   const pillars = [
@@ -73,32 +61,7 @@ const Pillars: React.FC = () => {
     }
   ];
 
-  const roles = [
-    {
-      title: "Coordenador Geral",
-      description: "Responsável por toda a gestão executiva do projeto, incluindo seleção e contratação de pessoal e supervisão da equipe."
-    },
-    {
-      title: "Coordenador Operacional",
-      description: "Responsável pela gestão de operações, logística de amostras, insumos e equipamentos."
-    },
-    {
-      title: "Coordenador Educacional",
-      description: "Responsável pelas atividades educacionais e capacitação de pessoal para a Rede."
-    },
-    {
-      title: "Coordenador de Dados Sênior",
-      description: "Supervisiona as atividades de cientistas de dados e bioinformatas do projeto."
-    },
-    {
-      title: "Bioinformata Sênior",
-      description: "Coordena a equipe de bioinformatas e é responsável pelas análises de bioinformática."
-    },
-    {
-      title: "Biologista Sênior",
-      description: "Supervisiona a equipe de biólogos e realiza experimentos nos laboratórios da rede."
-    }
-  ];
+  // (Roles removidos por solicitação)
 
   return (
     <section id="pillars" className="py-16 bg-primary text-white">
@@ -119,20 +82,6 @@ const Pillars: React.FC = () => {
                 items={pillar.items}
               />
             ))}
-          </div>
-          
-          <div className="mt-12 bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-6 text-center">Equipe e Cargos</h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {roles.map((role, index) => (
-                <RoleCard
-                  key={index}
-                  title={role.title}
-                  description={role.description}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>

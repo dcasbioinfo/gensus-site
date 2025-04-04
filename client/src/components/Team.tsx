@@ -8,12 +8,14 @@ import eduardoPhoto from '../assets/images/researchers/Eduardo.gif';
 import fabioPhoto from '../assets/images/researchers/Fabio.gif';
 import leandroPhoto from '../assets/images/researchers/Leandro.gif';
 import michelPhoto from '../assets/images/researchers/Michel.jpg';
+import normaPhoto from '../assets/images/researchers/Norma.jpg';
 
 // Importando as fotos das coordenadoras
 import barbaraPhoto from '../assets/images/researchers/Barbara.gif';
 import carolinaPhoto from '../assets/images/researchers/Carolina.gif';
 import dilzaPhoto from '../assets/images/researchers/Dilza.gif';
 import marinaPhoto from '../assets/images/researchers/Marina.gif';
+import rafaellaPhoto from '../assets/images/researchers/Rafaella.gif';
 
 interface TeamMember {
   name: string;
@@ -50,6 +52,7 @@ const researchers: TeamMember[] = [
     name: "Profa. Dra. Norma Lucena",
     role: "Pesquisadora Principal",
     institution: "Fiocruz Pernambuco",
+    photoUrl: normaPhoto,
     lattes: "http://lattes.cnpq.br/7341938714365067"
   },
   {
@@ -111,6 +114,13 @@ const coordinators: TeamMember[] = [
     institution: "Departamento de Ciência e Tecnologia (DECIT/MS)",
     photoUrl: carolinaPhoto,
     lattes: "http://lattes.cnpq.br/9218128922992439"
+  },
+  {
+    name: "Dra. Rafaella Souza Ferraz",
+    role: "Coordenadora Educacional",
+    institution: "Departamento de Ciência e Tecnologia (DECIT/MS)",
+    photoUrl: rafaellaPhoto,
+    lattes: "http://lattes.cnpq.br/2370957595755856"
   },
 ];
 
