@@ -18,6 +18,7 @@ export default defineConfig({
         ]
       : []),
   ],
+  base: '/gensus-site/',
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
