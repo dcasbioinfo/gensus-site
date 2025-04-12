@@ -3,9 +3,9 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import { ResearchCenter } from '../assets/projectData';
 
 interface GoogleMapComponentProps {
-  centers: ResearchCenter[];  // Certifique-se de que esses dados sejam estáticos.
+  centers: ResearchCenter[];
   title: string;
-  onRemoveCenter?: (id: number) => void; // Remova essa prop se não for necessária.
+  onRemoveCenter?: (id: number) => void;
   editable?: boolean;
 }
 
@@ -71,9 +71,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
             >
               <div className="bg-white p-2 rounded shadow">
                 <h3 className="font-semibold text-gray-800">{selectedCenter.name}</h3>
-                <p className="text-sm text-gray-600">
-                  {selectedCenter.city}, {selectedCenter.state}
-                </p>
+                <p className="text-sm text-gray-600">{selectedCenter.city}, {selectedCenter.state}</p>
                 {selectedCenter.description && (
                   <p className="text-xs mt-1 text-gray-700">{selectedCenter.description}</p>
                 )}
@@ -98,4 +96,3 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
 };
 
 export default GoogleMapComponent;
-

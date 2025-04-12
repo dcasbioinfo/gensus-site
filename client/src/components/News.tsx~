@@ -5,11 +5,12 @@ const News: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
   const [selectedNewsItem, setSelectedNewsItem] = useState<NewsItem | null>(null);
   
-  // Para site estático, os dados de notícias devem ser carregados localmente.
+  // Recuperar todas as notícias ou filtrar por categoria
   const news = selectedCategory === 'todos' 
     ? getLatestNews() 
     : getNewsByCategory(selectedCategory as NewsItem['category']);
   
+  // Categorias disponíveis
   const categories = [
     { id: 'todos', label: 'Todos' },
     { id: 'evento', label: 'Eventos' },
@@ -19,11 +20,13 @@ const News: React.FC = () => {
     { id: 'outro', label: 'Outros' }
   ];
   
+  // Mostrar detalhes de uma notícia
   const showNewsDetails = (item: NewsItem) => {
     setSelectedNewsItem(item);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   
+  // Voltar para a lista de notícias
   const backToNewsList = () => {
     setSelectedNewsItem(null);
   };
@@ -37,7 +40,7 @@ const News: React.FC = () => {
         </p>
         
         {selectedNewsItem ? (
-          // Exibir detalhes da notícia selecionada
+          // Detalhes da notícia selecionada
           <div className="max-w-4xl mx-auto">
             <button 
               onClick={backToNewsList}
@@ -94,8 +97,9 @@ const News: React.FC = () => {
             </div>
           </div>
         ) : (
-          // Exibir lista de notícias com filtro por categorias
+          // Lista de notícias
           <>
+            {/* Filtro de categorias */}
             <div className="flex flex-wrap justify-center mb-8 gap-2">
               {categories.map(category => (
                 <button
@@ -112,6 +116,7 @@ const News: React.FC = () => {
               ))}
             </div>
             
+            {/* Lista de notícias */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {news.map(item => (
                 <div 
@@ -165,4 +170,3 @@ const News: React.FC = () => {
 };
 
 export default News;
-

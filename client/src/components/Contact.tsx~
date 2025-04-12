@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
@@ -40,29 +41,21 @@ const Contact: React.FC = () => {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setSubmitting(true);
     try {
-      // Monta o link mailto com os dados do formulário.
-      const mailtoLink = `mailto:genomas_sus@usp.br?subject=${encodeURIComponent(
-        data.subject
-      )}&body=${encodeURIComponent(
-        `Nome: ${data.name}\nEmail: ${data.email}\n\n${data.message}`
-      )}`;
+      const response = await apiRequest('POST', '/api/contact', data);
+      const result = await response.json();
       
-      // Abre o cliente de email do usuário.
-      window.location.href = mailtoLink;
-      
-      // Exibe um toast informando que o email foi preparado.
       toast({
-        title: "Mensagem preparada",
-        description: "Seu email foi preparado. Complete o envio no seu cliente de email.",
+        title: "Mensagem enviada",
+        description: "Agradecemos o seu contato. Retornaremos em breve.",
         variant: "default",
       });
       
       reset();
     } catch (error) {
-      console.error('Erro ao preparar formulário:', error);
+      console.error('Erro ao enviar formulário:', error);
       toast({
         title: "Erro",
-        description: "Ocorreu um erro ao preparar a mensagem. Por favor, tente novamente.",
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.",
         variant: "destructive",
       });
     } finally {
@@ -206,4 +199,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-

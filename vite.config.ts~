@@ -1,0 +1,26 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  // Define a pasta 'client' como a raiz do projeto para o Vite
+  root: './client',
+  plugins: [react()],
+  
+  // Caso o deploy seja feito na raiz ou em um subdiretório, ajuste a propriedade base, se necessário
+  base: '/',
+  
+  // Configurações de build
+  build: {
+    // Como a raiz foi definida como './client', o outDir é relativo a ela.
+    // '../dist' criará a pasta 'dist' na raiz do projeto.
+    outDir: '../dist',
+    emptyOutDir: true,
+    sourcemap: false,
+  },
+  
+  server: {
+    port: 3000,
+    open: true,
+  },
+});
+

@@ -1,3 +1,5 @@
+// utils.ts
+
 /**
  * Concatena classes CSS de forma condicional.
  * Aceita argumentos que podem ser strings, undefined, null ou false e retorna uma string com as classes válidas.
@@ -10,22 +12,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 }
 
 /**
- * Realiza um scroll suave até o elemento com o ID fornecido.
- *
- * Exemplo:
- *   scrollToElement('contact') // Faz scroll até o elemento com id="contact"
- */
-export function scrollToElement(id: string): void {
-  if (typeof document !== 'undefined') {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-}
-
-/**
- * Formata uma string de data para o padrão dd/mm/yyyy.
+ * Formata uma data para o formato dd/mm/yyyy.
  *
  * Exemplo:
  *   formatNewsDate("2023-10-10T15:30:00Z") -> "10/10/2023"
@@ -49,8 +36,8 @@ export function capitalize(text: string): string {
 
 /**
  * Função simulada de requisição de API.
- * Em um site estático, chamadas dinâmicas de API não estão disponíveis.
- * Se algum componente invocar essa função, ela lançará um erro.
+ * Em um site estático, chamadas dinâmicas não estão disponíveis, portanto
+ * essa função lança um erro caso seja invocada.
  */
 export async function apiRequest(): Promise<never> {
   throw new Error("Chamadas dinâmicas de API não estão disponíveis em um site estático.");

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Define a classe .border-border com o valor desejado */
+  .border-border {
+    border-color: #ced4da; /* ou use o valor que preferir para a cor de borda em healthcare */
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -11,3 +18,4 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
